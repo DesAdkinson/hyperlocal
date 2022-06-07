@@ -1,0 +1,29 @@
+{
+  "name": "hyperlocal",
+  "version": "1.0.0",
+  "description": "Proof of concept for consuming the (SOAP) Hyper Local Content Web Service provided by Landmark Information Group",
+  "scripts": {
+    "test": "jest --config ./jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesAdkinson/hyperlocal.git"
+  },
+  "keywords": [],
+  "author": "Des Adkinson",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/DesAdkinson/hyperlocal/issues"
+  },
+  "homepage": "https://github.com/DesAdkinson/hyperlocal#readme",
+  "dependencies": {
+    "easy-soap-request": "^4.7.0",
+    "jest-matcher-utils": "^28.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.1",
+    "jest": "^28.1.1",
+    "ts-jest": "^28.0.4",
+    "typescript": "^4.7.3"
+  }
+}
