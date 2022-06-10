@@ -56,12 +56,12 @@ describe('SOAP response parsing of a retreived reponse', () => {
     expect(res_obj.responseCode).toBe(200);
 
     expect(res_obj.requestId).toEqual(expect.any(Number)); //value changes per call
-    expect(res_obj.avm).toBe(652000);
-    expect(res_obj.minAvm).toBe(515000);
-    expect(res_obj.maxAvm).toBe(789000);
-    expect(res_obj.rentalAVM).toBe(1690);
-    expect(res_obj.minRentalAVM).toBe(1340);
-    expect(res_obj.maxRentalAVM).toBe(2040);
+    expect(res_obj.avm).toBe(680000);
+    expect(res_obj.minAvm).toBe(537000);
+    expect(res_obj.maxAvm).toBe(823000);
+    expect(res_obj.rentalAVM).toBe(1790);
+    expect(res_obj.minRentalAVM).toBe(1410);
+    expect(res_obj.maxRentalAVM).toBe(2170);
     expect(res_obj.propertytype).toBe("S");
     expect(res_obj.tenure).toBe("F");
     expect(res_obj.yearBuilt).toBe("");
