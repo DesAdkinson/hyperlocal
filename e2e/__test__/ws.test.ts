@@ -1,6 +1,5 @@
-const {expect} = require('expect');
 const soapRequest = require('easy-soap-request');
-const { processResponse } = require('../../src/utils/parsing') 
+var processResponse_e2e = require('../../src/utils/parsing').processResponse;
 
 /*  HARDCODED TEST VALUES (for e2e test) */
 const test_username = "XXX";  //TO ADD (as supplied by vendor)
@@ -47,15 +46,18 @@ describe('SOAP response parsing of a retreived reponse', () => {
     const { response } = await soapRequest({ url: url, headers: ws_headers, xml: SOAP_Envelope, timeout: 1000}); // Optional timeout parameter(milliseconds)
     const { body, statusCode } = response;
 
-    const res_json = processResponse(body);
-
-    const res_obj = JSON.parse(res_json);
+    let res_obj = processResponse_e2e(body);
 
     // Note: Status 201 denotes 'Successful response with flexible match' and
     // was observed once when passing a Flat number as well as House Number
     expect(res_obj.responseCode).toBe(200);
 
     expect(res_obj.requestId).toEqual(expect.any(Number)); //value changes per call
+
+    /* CAUTION: The values returned by the third party web service change periodically
+                causing these tests to break. Current (crude) solution is to run the service
+                in SOAPUI (or similar) to obtain the new values
+    */ 
     expect(res_obj.avm).toBe(680000);
     expect(res_obj.minAvm).toBe(537000);
     expect(res_obj.maxAvm).toBe(823000);
@@ -64,8 +66,8 @@ describe('SOAP response parsing of a retreived reponse', () => {
     expect(res_obj.maxRentalAVM).toBe(2170);
     expect(res_obj.propertytype).toBe("S");
     expect(res_obj.tenure).toBe("F");
-    expect(res_obj.yearBuilt).toBe("");
-    expect(res_obj.bedrooms).toBe("");
+    expect(res_obj.yearBuilt).toBe(NaN);
+    expect(res_obj.bedrooms).toBe(NaN);
     expect(res_obj.hasOwnProperty('commentary')); //verbose value - just checking property found
     
   });

@@ -1,5 +1,4 @@
-const {expect} = require('expect');
-const { processResponse } = require('../parsing') 
+var processResponse_static = require('../parsing').processResponse;
 
 const mock_response = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" +
   "<response>" +
@@ -22,8 +21,7 @@ const mock_response = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" +
 
 describe('SOAP response parsing of a MOCK reponse (NO web service invocation)', () => {
 
-  const res_json = processResponse(mock_response);
-  res_obj = JSON.parse(res_json);
+  let res_obj = processResponse_static(mock_response);
 
   it('returns a 200 responseCode', () => {
     expect(res_obj.responseCode).toBe(200);
